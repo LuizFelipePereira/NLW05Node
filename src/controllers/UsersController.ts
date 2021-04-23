@@ -11,6 +11,15 @@ class UsersController {
           return response.json(user);
 
      }
+
+     async findByEmail(request: Request, response: Response) {
+          const { email } = request.params;
+          const usersService = new UsersService();
+
+          const list = await usersService.findByEmail(email);
+
+          return response.json(list);
+     }
 }
 
 export { UsersController }

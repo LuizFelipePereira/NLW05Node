@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid"
 class User {
 
      @PrimaryColumn()
-     id: String;
+     id: string;
 
      @Column()
      email: string;
