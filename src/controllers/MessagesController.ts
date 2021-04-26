@@ -23,6 +23,7 @@ class MessagesController {
           const list = await messagesService.listByUser(id);
 
           return response.json(list);
+          
      }
 }
 

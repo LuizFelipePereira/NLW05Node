@@ -16,7 +16,7 @@ class MessagesService {
      }
 
 
-     async create({admin_id, text, user_id}) {
+     async create({admin_id, text, user_id}: IMessageCreate) {
           
           const message = this.massagesRepository.create({
                admin_id,
@@ -38,4 +38,4 @@ class MessagesService {
 
 }
 
-export { MessagesService }
+export { MessagesService };

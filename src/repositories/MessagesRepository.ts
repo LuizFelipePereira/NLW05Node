@@ -7,4 +7,4 @@ class MessagesRepository extends Repository<Message>{
 
 }
 
-export { MessagesRepository}
+export { MessagesRepository};

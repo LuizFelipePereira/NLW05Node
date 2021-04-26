@@ -7,4 +7,4 @@ class ConnectionsRepository extends Repository<Connection>{
 
 }
 
-export { ConnectionsRepository}
+export { ConnectionsRepository};

@@ -7,4 +7,4 @@ class UsersRepository extends Repository<User>{
 
 }
 
-export { UsersRepository}
+export { UsersRepository};
