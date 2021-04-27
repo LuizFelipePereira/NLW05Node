@@ -54,7 +54,6 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
   });
 
   socket.on("admin_send_to_client", (message) => {
-    // pegar o socket para se comunicar com o admin
     socket_admin_id = message.socket_id;
 
     const template_admin = document.getElementById("admin-template").innerHTML;
@@ -70,29 +69,23 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
 document
   .querySelector("#send_message_button")
   .addEventListener("click", (event) => {
-    // pega a mensagem digitada pelo client
     const text = document.getElementById("message_user");
 
-    // desestrutura a mensagem do client
     const params = {
       text: text.value,
       socket_admin_id,
     };
 
-    // envia a mensagem para o admin
     socket.emit("client_send_to_admin", params);
 
-    // pegar o template das mensagens do client
     const template_client = document.getElementById("message-user-template")
       .innerHTML;
 
-    // criar o render a mensagem digitada na pagina
     const rendered = Mustache.render(template_client, {
       message: text.value,
       email: emailUser,
     });
 
-    // renderizar o template na parte das mensagens
     document.getElementById("messages").innerHTML += rendered;
 
     text.value = "";

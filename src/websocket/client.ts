@@ -26,7 +26,9 @@ io.on("connect", async (socket) => {
                await connectionsService.create({
                     socket_id,
                     user_id: user.id,
-               })
+               });
+
+               user_id = user.id;
           }
           else {
                user_id = userExists.id;
@@ -37,6 +39,7 @@ io.on("connect", async (socket) => {
                          socket_id,
                          user_id: userExists.id,
                     });
+                    
                }
                else { // sobrescrever o valor do socket_id
                     connection.socket_id = socket_id;
@@ -63,6 +66,7 @@ io.on("connect", async (socket) => {
           // localizar o id do client atraves do id do socket
           const { user_id } = await connectionsService.findBySocketID(socket_id);
 
+
           // grava a mensagem enviada pelo client
           const message = await messagesService.create({
                text,
@@ -74,4 +78,8 @@ io.on("connect", async (socket) => {
                socket_id,
           });
      });
+     
+     socket.on("disconnect", async () => {
+          await connectionsService.deleteBySocketId(socket.id);
+        });
 });

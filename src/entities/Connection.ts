@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryColumn, ManyToOne, JoinColumn,UpdateDateColumn } from "typeorm";
 
 import { v4 as uuid } from "uuid"
 import { User } from "./User";
@@ -25,7 +25,7 @@ class Connection {
      @CreateDateColumn()
      created_at: Date;
 
-     @CreateDateColumn()
+     @UpdateDateColumn()
      updated_at: Date;
 
      constructor() {
